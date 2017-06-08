@@ -1,8 +1,18 @@
 fileFormatVersion: 2
 guid: 16e3f930239ae4562865b7c0918b8677
+timeCreated: 1496942852
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - foodText: {instanceID: 0}
+  - moveSound1: {fileID: 8300000, guid: 892962212a4b74d1c9f578a3b6ea6439, type: 3}
+  - moveSound2: {fileID: 8300000, guid: a826bc3d758db43d6ae9caf415b63d1d, type: 3}
+  - eatSound1: {fileID: 8300000, guid: 1cb61f83d60374c7389bb547431919e3, type: 3}
+  - eatSound2: {fileID: 8300000, guid: 062161c1897a54088a5430f8c197e1b8, type: 3}
+  - drinkSound1: {fileID: 8300000, guid: b6b608537288246c9a464915db27bf52, type: 3}
+  - drinkSound2: {fileID: 8300000, guid: a031a9f1eb8bf4144b0ac270d929aea9, type: 3}
+  - gameOverSound: {fileID: 8300000, guid: e2beefeb2273f4efe992adf5b8d67c29, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
