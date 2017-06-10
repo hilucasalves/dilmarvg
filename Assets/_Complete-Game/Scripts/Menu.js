@@ -14,7 +14,7 @@ function MenuPrincipal()
 
 function IniciarJogo()
 {
-	Application.LoadLevel("_Complete-Game");
+Application.LoadLevel("_Complete-Game"); 
 }
 //function Continue()
 //{

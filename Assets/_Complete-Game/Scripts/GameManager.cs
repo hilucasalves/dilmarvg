@@ -6,6 +6,7 @@ namespace Completed
 {
 	using System.Collections.Generic;		//Allows us to use Lists. 
 	using UnityEngine.UI;					//Allows us to use UI.
+	using UnityEngine.SceneManagement;
 	
 	public class GameManager : MonoBehaviour
 	{
@@ -23,9 +24,33 @@ namespace Completed
 		private List<Enemy> enemies;							//List of all Enemy units, used to issue them move commands.
 		private bool enemiesMoving;								//Boolean to check if enemies are moving.
 		private bool doingSetup = true;							//Boolean to check if we're setting up board, prevent Player from moving during setup.
-		
-		
-		
+
+		private bool firstRun = true;
+
+		void OnEnable()
+		{
+			//Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+			SceneManager.sceneLoaded += OnLevelFinishedLoading;
+		}
+
+		void OnDisable()
+		{
+			//Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+			SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+		}
+
+		void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+		{
+			if (firstRun)
+			{
+				firstRun = false;
+				return;
+			}
+
+			level++;
+			InitGame();
+		}
+
 		//Awake is always called before any Start functions
 		void Awake()
 		{
@@ -56,7 +81,7 @@ namespace Completed
 
         //this is called only once, and the paramter tell it to be called only after the scene was loaded
         //(otherwise, our Scene Load callback would be called the very first load, and we don't want that)
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+       /* [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static public void CallbackInitialization()
         {
             //register the callback to be called everytime the scene is loaded
@@ -66,9 +91,11 @@ namespace Completed
         //This is called each time a scene is loaded.
         static private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
+
+
             instance.level++;
             instance.InitGame();
-        }
+        }*/
 
 		
 		//Initializes the game for each level.
