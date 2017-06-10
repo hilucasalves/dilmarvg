@@ -1,35 +1,35 @@
-﻿#pragma strict
+﻿	#pragma strict
 
-function Start () {
-	
-}
+	/*
+	function Start () {
+		
+	}
 
-function Update () {
-	
-}
-function MenuPrincipal()
-{
-	Application.LoadLevel("Menu");
-}
+	function Update () {
+		
+	}
 
-function IniciarJogo()
-{
-Application.LoadLevel("_Complete-Game"); 
-}
-//function Continue()
-//{
-    
-//}
-function Creditos()
-{
-    Application.LoadLevel("creditos");
-}
-//function Options()
-//{
-    
-//}
-function Sair()
-{
-  Application.Quit();
+	function Continue(){
+	    
+	}
 
-}
+	function Options(){
+	    
+	}
+
+	*/
+	function MenuPrincipal(){
+		Application.LoadLevel("Menu");
+	}
+
+	function IniciarJogo(){
+		Application.LoadLevel("_Complete-Game"); 
+	}
+
+	function Creditos(){
+		Application.LoadLevel("Creditos");
+	}
+
+	function Sair(){
+		Application.Quit();
+	}
