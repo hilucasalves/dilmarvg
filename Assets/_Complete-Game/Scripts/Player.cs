@@ -259,7 +259,7 @@ namespace Completed
 				SoundManager.instance.musicSource.Stop();
 				
 				//Call the GameOver function of GameManager.
-				GameManager.instance.GameOver ();
+				GameManager.instance.GameOver();
 			}
 		}
 	}

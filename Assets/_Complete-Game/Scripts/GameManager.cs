@@ -101,30 +101,53 @@ namespace Completed
 		//Initializes the game for each level.
 		void InitGame()
 		{
-			//While doingSetup is true the player can't move, prevent player from moving while title card is up.
-			doingSetup = true;
-			
-			//Get a reference to our image LevelImage by finding it by name.
-			levelImage = GameObject.Find("LevelImage");
-			
-			//Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
-			levelText = GameObject.Find("LevelText").GetComponent<Text>();
-			
-			//Set the text of levelText to the string "Day" and append the current level number.
-			levelText.text = "Fase " + level;
-			
-			//Set levelImage to active blocking player's view of the game board during setup.
-			levelImage.SetActive(true);
-			
-			//Call the HideLevelImage function with a delay in seconds of levelStartDelay.
-			Invoke("HideLevelImage", levelStartDelay);
-			
-			//Clear any Enemy objects in our List to prepare for next level.
-			enemies.Clear();
-			
-			//Call the SetupScene function of the BoardManager script, pass it current level number.
-			boardScript.SetupScene(level);
-			
+			if (level.Equals (11)) {
+				doingSetup = false;
+
+				//Get a reference to our image LevelImage by finding it by name.
+				levelImage = GameObject.Find ("LevelImage");
+
+				//Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
+				levelText = GameObject.Find ("LevelText").GetComponent<Text> ();
+
+				//Set the text of levelText to the string "Day" and append the current level number.
+				levelText.text = "Você venceu !";
+
+				//Set levelImage to active blocking player's view of the game board during setup.
+				levelImage.SetActive (true);
+
+				enabled = false;
+
+				//Call the HideLevelImage function with a delay in seconds of levelStartDelay.
+				Invoke ("HideLevelImage", 5);
+
+				StartCoroutine("wait");
+
+			} else {
+				//While doingSetup is true the player can't move, prevent player from moving while title card is up.
+				doingSetup = true;
+
+				//Get a reference to our image LevelImage by finding it by name.
+				levelImage = GameObject.Find("LevelImage");
+
+				//Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
+				levelText = GameObject.Find("LevelText").GetComponent<Text>();
+
+				//Set the text of levelText to the string "Day" and append the current level number.
+				levelText.text = "Fase " + level;
+
+				//Set levelImage to active blocking player's view of the game board during setup.
+				levelImage.SetActive(true);
+
+				//Call the HideLevelImage function with a delay in seconds of levelStartDelay.
+				Invoke("HideLevelImage", levelStartDelay);
+
+				//Clear any Enemy objects in our List to prepare for next level.
+				enemies.Clear();
+
+				//Call the SetupScene function of the BoardManager script, pass it current level number.
+				boardScript.SetupScene(level);
+			}
 		}
 		
 		
@@ -141,6 +164,7 @@ namespace Completed
 		//Update is called every frame.
 		void Update()
 		{
+
 			//Check that playersTurn or enemiesMoving or doingSetup are not currently true.
 			if(playersTurn || enemiesMoving || doingSetup)
 				
@@ -170,8 +194,18 @@ namespace Completed
 			
 			//Disable this GameManager.
 			enabled = false;
+
+			StartCoroutine("wait");
+
 		}
-		
+
+
+		IEnumerator wait(){
+			yield return new WaitForSeconds(3);
+			Application.LoadLevel("Menu");
+		}
+
+
 		//Coroutine to move enemies in sequence.
 		IEnumerator MoveEnemies()
 		{

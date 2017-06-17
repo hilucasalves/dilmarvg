@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FF78EF4A-8EB7-DD89-BD26-869CB1C7106C}</ProjectGuid>
+    <ProjectGuid>{C8F96446-B7CD-6B8B-40DA-CB0C7F4914B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-UnityScript</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -46,15 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Complete-Game\Scripts\BoardManager.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\Enemy.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\GameManager.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\Loader.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\MovingObject.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\Pause.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\Player.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\SoundManager.cs" />
-     <Compile Include="Assets\_Complete-Game\Scripts\Wall.cs" />
+     <Compile Include="Assets\_Complete-Game\Scripts\Menu.js" />
      <None Include="Assets\Fonts\OFL.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
