@@ -20,7 +20,9 @@ namespace Completed
 		public AudioClip drinkSound1;				//1 of 2 Audio clips to play when player collects a soda object.
 		public AudioClip drinkSound2;				//2 of 2 Audio clips to play when player collects a soda object.
 		public AudioClip gameOverSound;				//Audio clip to play when player dies.
-		
+
+		public static Player instance;
+
 		private Animator animator;					//Used to store a reference to the Player's animator component.
 		private int food;                           //Used to store player food points total during level.
 #if UNITY_IOS || UNITY_ANDROID || UNITY_WP8 || UNITY_IPHONE
@@ -257,9 +259,11 @@ namespace Completed
 				
 				//Stop the background music.
 				SoundManager.instance.musicSource.Stop();
-				
+
+
 				//Call the GameOver function of GameManager.
 				GameManager.instance.GameOver();
+
 			}
 		}
 	}
