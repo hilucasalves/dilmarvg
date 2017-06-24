@@ -9,6 +9,8 @@ public class Music : MonoBehaviour {
 	public Texture2D musicOff; 
 	public bool ativo;
 
+	public static Music instance = null;
+
 	// Use this for initialization
 	void Start () {
 
@@ -20,13 +22,12 @@ public class Music : MonoBehaviour {
 			SoundManager.instance.musicSource.mute = false;
 			GetComponent<GUITexture>().texture = musicOn;
 		} else {
-				SoundManager.instance.musicSource.mute = true;
-
+			SoundManager.instance.musicSource.mute = true;
 			GetComponent<GUITexture>().texture = musicOff;
 		}
 	}
 
-	void OnMouseDown() {
+	public void OnMouseDown() {
 		ativo = !ativo;
 	}
 
