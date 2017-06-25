@@ -20,6 +20,7 @@ namespace Completed
 		public AudioClip drinkSound1;				//1 of 2 Audio clips to play when player collects a soda object.
 		public AudioClip drinkSound2;				//2 of 2 Audio clips to play when player collects a soda object.
 		public AudioClip gameOverSound;				//Audio clip to play when player dies.
+		public AudioClip gameWinsSound;
 
 		public static Player instance;
 
@@ -172,19 +173,29 @@ namespace Completed
 			//Set the attack trigger of the player's animation controller in order to play the player's attack animation.
 			animator.SetTrigger ("playerChop");
 		}
-		
-		
+
 		//OnTriggerEnter2D is sent when another object enters a trigger collider attached to this object (2D physics only).
 		private void OnTriggerEnter2D (Collider2D other)
 		{
 			//Check if the tag of the trigger collided with is Exit.
 			if(other.tag == "Exit")
 			{
+
 				//Invoke the Restart function to start the next level with a delay of restartLevelDelay (default 1 second).
 				Invoke ("Restart", restartLevelDelay);
 				
 				//Disable the player object since level is over.
 				enabled = false;
+
+				if(GameManager.instance.level.Equals(10)){
+					Input.GetKeyDown (KeyCode.W);
+					//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
+					SoundManager.instance.PlaySingle(gameWinsSound);
+
+					//Stop the background music.
+					SoundManager.instance.musicSource.Stop();
+
+				}
 			}
 			
 			//Check if the tag of the trigger collided with is Food.
@@ -254,6 +265,7 @@ namespace Completed
 			//Check if food point total is less than or equal to zero.
 			if (food <= 0) 
 			{
+				Input.GetKeyDown (KeyCode.L);
 				//Call the PlaySingle function of SoundManager and pass it the gameOverSound as the audio clip to play.
 				SoundManager.instance.PlaySingle (gameOverSound);
 				
