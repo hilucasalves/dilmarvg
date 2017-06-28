@@ -109,8 +109,10 @@ namespace Completed
 				//Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
 				levelText = GameObject.Find ("LevelText").GetComponent<Text> ();
 
+
+				levelText.fontSize = 24;
 				//Set the text of levelText to the string "Day" and append the current level number.
-				levelText.text = "Você venceu !";
+				levelText.text = "Parabéns! Com sua ajuda Dilma vence e volta ao poder!";
 
 				//Set levelImage to active blocking player's view of the game board during setup.
 				levelImage.SetActive (true);
@@ -185,9 +187,10 @@ namespace Completed
 		//GameOver is called when the player reaches 0 food points
 		public void GameOver()
 		{
+
+			levelText.fontSize = 24;
 			//Set levelText to display number of levels passed and game over message
-			levelText.text = "Na fase " + level + ", Dilma não aguentou.";
-			
+			levelText.text = "Que pena. Na fase "+level+", Dilma cai e Temer fica no poder.";
 			//Enable black background image gameObject.
 			levelImage.SetActive(true);
 			StartCoroutine("wait");
